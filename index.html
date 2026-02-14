@@ -1,0 +1,145 @@
+# Valentine-2026
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Garima Will You Be My Valentine? 💖</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Comic Sans MS', cursive;
+        overflow: hidden;
+    }
+
+    .container {
+        text-align: center;
+        background: rgba(255,255,255,0.9);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+        font-size: 2.2rem;
+        color: #ff4d6d;
+    }
+
+    button {
+        padding: 15px 30px;
+        margin: 15px;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    #yesBtn {
+        background-color: #ff4d6d;
+        color: white;
+    }
+
+    #noBtn {
+        background-color: #ffd6e0;
+        color: #333;
+        position: absolute;
+    }
+
+    .message {
+        margin-top: 20px;
+        font-size: 1.3rem;
+        color: #ff4d6d;
+    }
+
+    .cute-img {
+        width: 120px;
+        margin-top: 15px;
+    }
+
+    .heart {
+        position: fixed;
+        font-size: 24px;
+        animation: floatUp 3s linear forwards;
+    }
+
+    @keyframes floatUp {
+        0% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-150px);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Garima Will you be my Valentine? 💕</h1>
+    <button id="yesBtn">YES 💖</button>
+    <button id="noBtn">NO 😒</button>
+
+    <div class="message" id="message"></div>
+    <img id="cuteImg" class="cute-img" src="" style="display:none;">
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const message = document.getElementById("message");
+const cuteImg = document.getElementById("cuteImg");
+
+const cuteMessages = [
+    "Please pookie 🥺💗",
+    "Baby pleaseee 😭",
+    "Don't break my heart 💔",
+    "I'll cryyyyy 😢",
+    "Say yes naaa 💕"
+];
+
+const cuteImages = [
+    "https://i.imgur.com/1Xq9BiN.png",
+    "https://i.imgur.com/mbG2wS2.png",
+    "https://i.imgur.com/8x6pK5G.png"
+];
+
+noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 100);
+    noBtn.style.left = `${x}px`;
+    noBtn.style.top = `${y}px`;
+
+    message.textContent = cuteMessages[Math.floor(Math.random() * cuteMessages.length)];
+    cuteImg.src = cuteImages[Math.floor(Math.random() * cuteImages.length)];
+    cuteImg.style.display = "block";
+});
+
+document.getElementById("yesBtn").addEventListener("click", () => {
+    message.textContent = "YAYYY!! I LOVE YOU 💖💖💖";
+    cuteImg.style.display = "none";
+
+    for (let i = 0; i < 30; i++) {
+        createHeart();
+    }
+});
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.textContent = "💖";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.top = window.innerHeight + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 3000);
+}
+</script>
+
+</body>
+</html>
